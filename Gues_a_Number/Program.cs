@@ -1,67 +1,79 @@
 ﻿using Gues_a_Number;
-
-string gameMode;
-
 while (true)
 {
-    Console.WriteLine("Start the game? (first press 1 or 2, then press enter):\n1. Start guessing game\n2. Exit");
-     gameMode = Console.ReadLine();
-
-    if (gameMode != "1" && gameMode != "2")
+    string gameMode;
+    while (true)
     {
-        Console.WriteLine("Invalid input. Press any key to continue...");
+        
+        Console.WriteLine("Start the game? (first press 1 or 2, then press enter):\n1. Start guessing game\n2. Try to confuse your PC");
+        gameMode = Console.ReadLine();
+
+        if (gameMode != "1" && gameMode != "2")
+        {
+            Console.WriteLine("Invalid input. Press enter to continue...");
+            Console.ReadLine();
+            Console.Clear();
+        }
+        else if (gameMode == "1")
+        {
+            Console.Clear();
+            Console.WriteLine("You choose the guess mode. Have fun!\nPress enter to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            break;
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Show this machine who is the Boss!\nPress enter to continue...");
+            Console.ReadLine();
+            Console.Clear();
+            break;
+        }
+    }
+
+    switch (gameMode)
+    {
+        case "1":
+            GuessMode.theNumber = GuessMode.TheNumber();
+            GuessMode.GameFeedback();
+
+            break;
+        case "2":
+            {
+                Console.WriteLine("Let's try to confuse this pc!\n Сhoose a number and your pc will try to guess it\n Press enter to continue...");
+                ;
+                Console.Clear();
+                ComputerGuess.ComputerFeedback();
+
+            }
+            break;
+
+    }
+    Console.WriteLine("Do you want to play again? (first press 1 or 2, then press enter):\n1. Play again\n2. Exit");
+    string restart;
+    restart = Console.ReadLine();
+
+    if (restart != "1" && restart != "2")
+    {
+        Console.WriteLine("Invalid input. Press enter to continue...");
         Console.ReadLine();
         Console.Clear();
     }
-    else if (gameMode == "1")
+    else if (restart == "1")
     {
         Console.Clear();
-        Console.WriteLine("You choose the guess mode. Have fun!\nPress any key to continue...");
+        Console.WriteLine("Restarting game... Have fun!\nPress enter to continue...");
         Console.ReadLine();
         Console.Clear();
-        break;
     }
     else
     {
         Console.Clear();
-        Console.WriteLine("Good bye. Have fun!\nPress any key to continue...");
+        Console.WriteLine("Good Bye!");
         Console.ReadLine();
         Console.Clear();
         break;
+
     }
-}
-
-switch (gameMode)
-{
-    case "1":
-
-        GuessMode guessMode = new GuessMode();
-        for (int i = 5; i > 0; i--)
-        {
-            Console.WriteLine($"You've got a {i} attempts");
-            Console.WriteLine("Guess the number!");
-            int.TryParse(Console.ReadLine(), out int tempGuess);
-            if (guessMode.PlayerGuess(tempGuess) == true)
-            {
-                Console.WriteLine("Game over");
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Press enter to continue...");
-                Console.ReadLine();
-                Console.Clear();
-            }
-            if (i - 1 == 0)
-            {
-                Console.WriteLine($"The number is: {guessMode.GetNumber()}. Better luck next time!)");
-            }
-        }
-        break;
-    case "2":
-        {
-
-        }
-        break;
-
 }
