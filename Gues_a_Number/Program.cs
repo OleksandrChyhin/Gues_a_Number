@@ -17,7 +17,7 @@ while (true)
         else if (gameMode == "1")
         {
             Console.Clear();
-            Console.WriteLine("You choose the guess mode. Have fun!\nPress enter to continue...");
+            Console.WriteLine("You choose the guess mode. Try to guess a number from 0 to 100. You've got 5 attempts. Have fun!\nPress enter to continue...");
             Console.ReadLine();
             Console.Clear();
             break;
@@ -41,7 +41,7 @@ while (true)
             break;
         case "2":
             {
-                Console.WriteLine("Let's try to confuse this pc!\n Сhoose a number and your pc will try to guess it\n Press enter to continue...");
+                Console.WriteLine("Let's try to confuse this pc!\n Сhoose a number from 0 to 100 and your pc will try to guess it\n Press enter to continue...");
                 ;
                 Console.Clear();
                 ComputerGuess.ComputerFeedback();
